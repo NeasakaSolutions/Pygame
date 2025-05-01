@@ -1,4 +1,4 @@
-'''COLISIONES'''
+'''MURO'''
 
 # Importaciones de librerias:
 import pygame
@@ -81,6 +81,45 @@ class Paleta(pygame.sprite.Sprite):
         # Mover con base a posicion actual y velocidad
         self.rect.move_ip(self.speed)
 
+# Creacion del ladrillo
+class Ladrillo(pygame.sprite.Sprite):
+    '''Clase para el manejo del ladrillo'''
+
+    # Funcion constructor
+    def __init__(self, posicion):
+        '''Contructor que recibe al constructor padre.'''
+
+        pygame.sprite.Sprite.__init__(self)
+        # Carga de la imagen:
+        self.image = pygame.image.load('Curso/Imagenes/ladrillo.png')
+        # Obtener el rectangulo de la imagen:
+        self.rect = self.image.get_rect()
+        # Posicion inicial:
+        self.rect.topleft = posicion
+
+# Creacion de la clase muro:
+class Muro(pygame.sprite.Group):
+    '''Clase que creara un grupo de ladrillos para la simulacion del muro'''
+
+    # FUncion constructor
+    def __init__(self, cantidad_ladrillos):
+        '''Llamamos la constructor padre'''
+        pygame.sprite.Group.__init__(self)
+
+        pos_x = 0
+        pos_y = 0
+        # Bucle para crear los ladrillos:
+        for i in range(cantidad_ladrillos):
+            # Creacion del ladrillo
+            ladrillo = Ladrillo((pos_x, pos_y))
+            # Se agrega el objeto al muro
+            self.add(ladrillo)
+
+            pos_x += ladrillo.rect.width
+            if pos_x >= ancho:
+                pos_x = 0
+                pos_y += ladrillo.rect.height
+
 # Creacion de la ventana
 pantalla = pygame.display.set_mode((ancho, alto))
 # Nombre de la ventana
@@ -90,9 +129,10 @@ reloj = pygame.time.Clock()
 # Ajustar repeticion de la paleta:
 pygame.key.set_repeat(30)
 
-# Iteracion del objeto
+# Iteracion de los objetos
 bolita = Bolita()
 paleta = Paleta()
+muro = Muro(50) # Cantidad de ladrillos
 
 while True:
     # Establecer los FPS:
@@ -115,5 +155,7 @@ while True:
     pantalla.blit(bolita.image, bolita.rect)
     # Dibujar paleta en pantalla:
     pantalla.blit(paleta.image, paleta.rect)
+    # Dibujar los ladrillos:
+    muro.draw(pantalla)
     # La ventana se actualizara
-    pygame.display.update()
+    pygame.display.flip()
