@@ -12,12 +12,16 @@ pygame.init()
 # Para los efectos de sonido
 pygame.mixer.init()
 
+# Creacion de la clase menu:
 class Menu():
     '''Clase que muestra la configuracion del menu'''
 
     # Constructor de la clase Menu
     def __init__(self):
         '''Funcion que crea la interfaz de la ventana'''
+
+        # Creacion de un reloj:
+        self.reloj = pygame.time.Clock()
 
         # Crear la ventana del menu principal:
         self.pantalla = pygame.display.set_mode((ancho, alto))
@@ -38,6 +42,13 @@ class Menu():
         # Tamanio de la imagen:
         self.fondo = pygame.transform.scale(self.fondo, (ancho, alto))
 
+        # Configuracion de los botones:
+        self.boton_inicio = pygame.image.load('Proyecto/assets/imagenes/boton_inicio.png').convert_alpha()
+        self.boton_salir = pygame.image.load('Proyecto/assets/imagenes/boton_salir.png').convert_alpha()
+        # Posicion de los botones:
+        self.rect_inicio = self.boton_inicio.get_rect(center = (ancho // 2, 175))
+        self.rect_salir = self.boton_salir.get_rect(center = (ancho // 2, 275))
+
 
     # Funcion para funcionamiento del menu
     def run(self):
@@ -52,9 +63,12 @@ class Menu():
 
             # Imagen:
             self.pantalla.blit(self.fondo, (0, 0))
+            # Botones:
+            self.pantalla.blit(self.boton_inicio, self.rect_inicio)
+            self.pantalla.blit(self.boton_salir, self.rect_salir)
             # Renderizado actual de la pantalla
             pygame.display.flip()
 
             # FPS:
-            pygame.time.Clock().tick(fps)
+            self.reloj = pygame.time.Clock()
 
