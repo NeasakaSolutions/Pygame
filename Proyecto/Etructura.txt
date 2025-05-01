@@ -1,0 +1,21 @@
+slenderman_novela/
+│
+├── main.py                 # Punto de entrada del juego
+├── settings.py             # Configuración general (tamaño de ventana, colores, etc.)
+├── scenes/
+│   ├── menu.py             # Menú principal
+│   ├── escena1.py          # Introducción
+│   ├── escena2.py          # Bosque
+│   ├── escena3.py          # Encuentro con Slenderman
+│   ├── final_a.py          # Final si huyes
+│   ├── final_b.py          # Final si te acercas
+│
+├── engine/
+│   ├── scene_manager.py    # Controlador de escenas
+│   ├── text_renderer.py    # Muestra texto con efecto máquina de escribir
+│   ├── button.py           # Clase para botones
+│
+├── assets/
+│   ├── images/             # Fondos, sprites, etc.
+│   ├── sounds/             # Música y efectos de sonido
+│   └── fonts/              # Tipografías

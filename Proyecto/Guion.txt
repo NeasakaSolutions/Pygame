@@ -1,0 +1,70 @@
+GENERADO con ChatGPT
+
+Título: "Bosque Silencioso"
+👤 Personaje principal:
+Nombre: Alex (puede ser masculino o femenino según el jugador)
+
+Rol: Estudiante de secundaria que decide explorar un bosque luego de escuchar rumores de una figura alta que aparece por la noche.
+
+🧾 Escena 1 – Introducción
+(Fondo: Habitación oscura / escritorio / noche)
+
+Texto:
+"Dicen que alguien desapareció anoche. Otra vez en el bosque. Otro caso sin explicación."
+"Alex, intrigado, decide investigar. Algo dentro de él siente que no es solo una leyenda."
+
+Botón: "Ir al bosque"
+
+🧾 Escena 2 – Llegada al bosque
+(Fondo: Bosque oscuro / árboles / bruma)
+
+Texto:
+"El silencio es denso. El viento apenas mueve las ramas. No hay rastro de animales."
+"Pero Alex siente que no está solo."
+
+Aparece figura lejana (opcional): sombra alta entre árboles.
+
+🧾 Escena 3 – El descubrimiento
+(Fondo: Parte más profunda del bosque)
+
+Texto:
+"Encuentra una hoja colgada en un árbol. Tiene una figura dibujada a mano: un hombre alto, sin rostro."
+"Al levantar la vista, ve una silueta entre la niebla. No se mueve. Solo observa."
+
+Opción:
+
+"Correr" → (va a escena 4A)
+
+"Acercarse" → (va a escena 4B)
+
+🧾 Escena 4A – Huida
+(Fondo: Bosque en movimiento / ramas)
+
+Texto:
+"Corre sin mirar atrás. Siente su respiración acelerarse. Algo lo sigue, pero no lo alcanza."
+"Cuando llega al borde del bosque, mira atrás. No hay nadie."
+
+→ Pasa al Final A.
+
+🧾 Escena 4B – Encuentro
+(Fondo: Silueta gigante cerca)
+
+Texto:
+"Da un paso. Luego otro. La figura sigue ahí, inmóvil. De repente, se apagan los sonidos."
+"Todo es negro. No siente su cuerpo. Solo una presión, como si alguien... lo estuviera absorbiendo."
+
+→ Pasa al Final B.
+
+🎬 Final A – Sobreviviente
+(Fondo: Habitación)
+
+Texto:
+"Desde esa noche, Alex nunca volvió al bosque. Pero a veces, desde su ventana, ve a alguien entre los árboles."
+"Y sabe que Slenderman lo sigue recordando."
+
+🎬 Final B – Desaparición
+(Fondo: Cartel de “Desaparecido”)
+
+Texto:
+"Nunca se encontró a Alex. Solo su linterna y una hoja arrugada."
+"Y en ella, un mensaje escrito a mano: 'No mires atrás'."
