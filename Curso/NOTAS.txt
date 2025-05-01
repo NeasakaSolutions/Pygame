@@ -57,3 +57,15 @@ pygame.sprite.spritecollide(sprite, grupo, eliminarDeGrupo) == Entrega listas de
 
 remove(sprite) == Remueve sprites
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+para crear textos es necesario crear primero la fuente
+
+pygame.font.SysFont(nombre_fuente, tamanio) == Creacion de fuente
+
+fuente.render(texto, antialias, color) == Recibe el texto y que color
+
+
+
+
+
