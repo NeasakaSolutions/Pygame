@@ -35,6 +35,10 @@ midleft
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+EVENTOS:
+pygame.KEYDOWN == Se produce al presionar alguna tecla
+evento.key == Muestra que tecla esta presionada
 
+el evento KEYDOWN se puede controlar el tiempo con == pygame.key.set_repeat(retraso_ms)
 
 

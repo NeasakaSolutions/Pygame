@@ -20,6 +20,7 @@ class Bolita(pygame.sprite.Sprite):
     # Funcion constructor
     def __init__(self):
         '''Contructor que recibe al constructor padre.'''
+
         pygame.sprite.Sprite.__init__(self)
         # Carga de la imagen:
         self.image = pygame.image.load('Curso/Imagenes/bolita.png')
@@ -48,15 +49,50 @@ class Bolita(pygame.sprite.Sprite):
         # Mover con base a posicion actual y velocidad
         self.rect.move_ip(self.speed)
 
+# Creacion de la bola
+class Paleta(pygame.sprite.Sprite):
+    '''Clase para la manipulacion de la paleta'''
+
+    # Funcion constructor
+    def __init__(self):
+        '''Contructor que recibe al constructor padre.'''
+
+        pygame.sprite.Sprite.__init__(self)
+        # Carga de la imagen:
+        self.image = pygame.image.load('Curso/Imagenes/paleta.png')
+        # Obtener el rectangulo de la imagen:
+        self.rect = self.image.get_rect()
+        # Posicion inicial centrada en la pantalla en x:
+        self.rect.midbottom = (ancho / 2, alto - 20)
+        # Establecer velocidad:
+        self.speed = [0, 0]
+
+    def update(self, evento):
+        '''Funcion que recibe informacion del evento en teclado y manipula la paleta'''
+
+        # Buscar si se presiono alguna tecla
+        if evento.key == pygame.K_LEFT and self.rect.left > 0:
+            self.speed = [-5, 0]
+        elif evento.key == pygame.K_RIGHT and self.rect.right < ancho:
+            self.speed = [5, 0]
+        else:
+            self.speed = [0, 0]
+        
+        # Mover con base a posicion actual y velocidad
+        self.rect.move_ip(self.speed)
+
 # Creacion de la ventana
 pantalla = pygame.display.set_mode((ancho, alto))
 # Nombre de la ventana
 pygame.display.set_caption('Juego de ladrillos')
 # Crear el reloj:
 reloj = pygame.time.Clock()
+# Ajustar repeticion de la paleta:
+pygame.key.set_repeat(30)
 
 # Iteracion del objeto
 bolita = Bolita()
+paleta = Paleta()
 
 while True:
     # Establecer los FPS:
@@ -67,6 +103,9 @@ while True:
         if evento.type == QUIT:
             pygame.quit()
             sys.exit()
+        # Buscar eventos del teclado:
+        elif evento.type == pygame.KEYDOWN:
+            paleta.update(evento)
 
     # Actualizar posicion de la bolita:
     bolita.update()
@@ -74,5 +113,7 @@ while True:
     pantalla.fill(color_azul)
     # Dibujar bolita en pantalla:
     pantalla.blit(bolita.image, bolita.rect)
+    # Dibujar paleta en pantalla:
+    pantalla.blit(paleta.image, paleta.rect)
     # La ventana se actualizara
     pygame.display.update()
