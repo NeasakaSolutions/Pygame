@@ -27,10 +27,16 @@ class Menu():
         # Configuracion de la musica de fondo:
         # Detener cualquier otro sonido en otro plano:
         pygame.mixer.stop()
-        #pygame.mixer.music.load('assets/sonidos/musica_fondo_menu.mp3')
-        pygame.mixer.music.load("/home/kali/Documents/Pygame/Proyecto/assets/sonidos/musica_fondo_menu.mp3")
+        pygame.mixer.music.load('Proyecto/assets/sonidos/musica_fondo_menu.mp3')
+        #pygame.mixer.music.load("/home/kali/Documents/Pygame/Proyecto/assets/sonidos/musica_fondo_menu.mp3")
         # Reproducir en bucle infinito:
         pygame.mixer.music.play(-1, 0.0)
+
+        # Configuracion de la imagen de fondo:
+        # Cargar la imagen:
+        self.fondo = pygame.image.load('Proyecto/assets/imagenes/fondo_menu.jpg').convert()
+        # Tamanio de la imagen:
+        self.fondo = pygame.transform.scale(self.fondo, (ancho, alto))
 
 
     # Funcion para funcionamiento del menu
@@ -44,6 +50,8 @@ class Menu():
                     pygame.quit()
                     sys.exit()
 
+            # Imagen:
+            self.pantalla.blit(self.fondo, (0, 0))
             # Renderizado actual de la pantalla
             pygame.display.flip()
 
