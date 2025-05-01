@@ -4,3 +4,37 @@ Las imagenes se cargan con pygame.image.load("subdireccion/imagen.png)
 rect == Hace las operaciones con los sprites atraves de rectangulos con coordenadas
 
 blit == Sirve para dibujar una superficie sobre otra por medio de coordenadas
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Escalares, e.g. 30:
+x
+y
+width
+height
+centerx
+centery
+top
+right
+bottom
+left
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Tuplas, e.g. (40, 10)
+size
+centerx
+topleft
+topright
+bottomleft
+bottomright
+midtop
+midright
+midbottom
+midleft
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
