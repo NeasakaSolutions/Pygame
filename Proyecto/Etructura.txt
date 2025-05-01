@@ -1,21 +1,28 @@
 slenderman_novela/
 │
-├── main.py                 # Punto de entrada del juego
-├── settings.py             # Configuración general (tamaño de ventana, colores, etc.)
-├── scenes/
-│   ├── menu.py             # Menú principal
-│   ├── escena1.py          # Introducción
-│   ├── escena2.py          # Bosque
-│   ├── escena3.py          # Encuentro con Slenderman
-│   ├── final_a.py          # Final si huyes
-│   ├── final_b.py          # Final si te acercas
+├── main.py                     # Punto de entrada del juego
+├── settings.py                 # Configuración general (tamaño de ventana, colores, etc.)
+├── scenes/                     # Archivos que definen cada escena
+│   ├── escena1.py              # Introducción
+│   ├── escena2.py              # Bosque
+│   ├── escena3.py              # Encuentro con Slenderman
+│   ├── final_a.py              # Final si huyes
+│   └── final_b.py              # Final si te acercas
 │
-├── engine/
-│   ├── scene_manager.py    # Controlador de escenas
-│   ├── text_renderer.py    # Muestra texto con efecto máquina de escribir
-│   ├── button.py           # Clase para botones
+├── engine/                     # Módulos que ayudan a la funcionalidad del juego
+│   ├── scene_manager.py        # Controlador de escenas
+│   ├── text_renderer.py        # Muestra texto con efecto máquina de escribir
+│   ├── button.py               # Clase para botones
+│   └── json_loader.py          # Función para cargar archivos JSON
 │
-├── assets/
-│   ├── images/             # Fondos, sprites, etc.
-│   ├── sounds/             # Música y efectos de sonido
-│   └── fonts/              # Tipografías
+├── data/                       # Archivos JSON con diálogos y configuraciones
+│   ├── dialogos_escena1.json   # Diálogos de la escena 1
+│   ├── dialogos_escena2.json   # Diálogos de la escena 2
+│   ├── dialogos_escena3.json   # Diálogos de la escena 3
+│   ├── dialogos_final_a.json   # Diálogos de la escena de final A
+│   └── dialogos_final_b.json   # Diálogos de la escena de final B
+│
+├── assets/                     # Archivos de recursos (imágenes, sonidos, fuentes)
+│   ├── images/                 # Fondos, sprites, etc.
+│   ├── sounds/                 # Música y efectos de sonido
+│   └── fonts/                  # Tipografías
