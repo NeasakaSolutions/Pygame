@@ -41,4 +41,19 @@ evento.key == Muestra que tecla esta presionada
 
 el evento KEYDOWN se puede controlar el tiempo con == pygame.key.set_repeat(retraso_ms)
 
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+pygame.sprite.Group == COntenedor de sprites
+
+add == aniade elementos
+
+draw == dibuja todos los elementos del grupo
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+pygame.sprite.collide_rect(sprite1, sprite2) == Determina si hay colision entre ambos sprites, mas no dice como ni cuando
+
+pygame.sprite.spritecollide(sprite, grupo, eliminarDeGrupo) == Entrega listas de sprites dentro de un grupo que colisionan con otros sprites y permite decidir si eliminar o no
+
+remove(sprite) == Remueve sprites
 
