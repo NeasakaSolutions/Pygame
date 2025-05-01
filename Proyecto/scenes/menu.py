@@ -58,8 +58,14 @@ class Menu():
             # Manejo de eventos
             for event in pygame.event.get():
                 if event.type == QUIT:
-                    pygame.quit()
-                    sys.exit()
+                    ejecutando = False
+
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    if self.rect_inicio.collidepoint(event.pos):
+                        print('Iniciar juego')
+                    elif self.rect_salir.collidepoint(event.pos):
+                        pygame.quit()
+                        sys.exit()
 
             # Imagen:
             self.pantalla.blit(self.fondo, (0, 0))
