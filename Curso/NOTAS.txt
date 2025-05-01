@@ -1,0 +1,6 @@
+Sprite == Objeto visible en pantalla
+Las imagenes se cargan con pygame.image.load("subdireccion/imagen.png)
+
+rect == Hace las operaciones con los sprites atraves de rectangulos con coordenadas
+
+blit == Sirve para dibujar una superficie sobre otra por medio de coordenadas
