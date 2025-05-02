@@ -3,6 +3,7 @@ import pygame
 import sys
 import os
 from pygame.locals import QUIT
+from scenes.escena1 import Escena1
 # Importacion de las variales globales
 from settings import ancho, alto, fps
 
@@ -62,7 +63,8 @@ class Menu():
 
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if self.rect_inicio.collidepoint(event.pos):
-                        print('Iniciar juego')
+                        escena = Escena1()
+                        escena.run()
                     elif self.rect_salir.collidepoint(event.pos):
                         pygame.quit()
                         sys.exit()
