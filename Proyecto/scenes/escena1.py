@@ -1,8 +1,10 @@
+# Importaciones necesarias
 import pygame
-from pygame.locals import QUIT
+from pygame.locals import QUIT, KEYDOWN
 import sys
 from settings import ancho, alto, fps
 from utils.textos import cargar_textos
+from scenes.escena2 import Escena2  # Asegúrate de importar la clase Escena2
 
 # Función para dividir el texto en varias líneas según el ancho
 def dividir_texto(texto, fuente, ancho_max):
@@ -74,7 +76,13 @@ class Escena1():
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
-            
+                # Detectar si se presiona la tecla ESPACIO
+                if event.type == KEYDOWN and event.key == pygame.K_SPACE:
+                    # Al presionar la tecla ESPACIO, cambiar a la escena 2
+                    escena = Escena2()  # Instanciamos la escena 2
+                    escena.run()  # Llamamos al método run() de la escena 2
+                    return  # Terminamos la ejecución de la escena 1
+
             # Dibujos
             # Dibujar el fondo
             self.pantalla.blit(self.fondo, (0, 0))
@@ -92,6 +100,7 @@ class Escena1():
             pygame.display.flip()
             # Renderizar a la velocidad adecuada
             self.reloj.tick(fps)
+
 
 
 
