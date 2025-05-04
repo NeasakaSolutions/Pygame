@@ -5,7 +5,7 @@ import sys
 from settings import ancho, alto, fps
 from utils.textos import cargar_textos
 from scenes.escena2 import Escena2
-from scenes.escena2_1 import Escena2_1  # Asegúrate de tener esta clase creada
+from scenes.escenaA2 import EscenaA2 # Asegúrate de tener esta clase creada
 
 # Función para dividir texto
 def dividir_texto(texto, fuente, ancho_max):
@@ -117,7 +117,7 @@ class Escena1():
                 return
             elif hover_ciudad and mouse_click:
                 pygame.mixer.music.stop()
-                escena = Escena2_1()
+                escena = EscenaA2()
                 escena.run()
                 return
 

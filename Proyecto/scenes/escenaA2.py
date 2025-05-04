@@ -3,7 +3,7 @@ import sys
 from settings import ancho, alto, fps
 
 # Clase para la escena 2 con una ventana negra
-class Escena2_1():
+class EscenaA2():
     
     def __init__(self):
         '''Inicialización de la pantalla de la escena 2'''
@@ -13,11 +13,11 @@ class Escena2_1():
 
         # Cargar e iniciar música del bosque (solo se hace aquí)
         pygame.mixer.music.load('Proyecto/assets/sonidos/musica_bosque.mp3')
-        pygame.mixer.music.play(-1, 0.0)  # En bucle
+        pygame.mixer.music.play(-1, 0.0) 
 
         # Configuración de la pantalla
         self.pantalla = pygame.display.set_mode((ancho, alto))
-        pygame.display.set_caption('Escena 2_1 - Ciudad')
+        pygame.display.set_caption('Escena A2 - Ciudad')
 
         # Reloj para controlar el frame rate
         self.reloj = pygame.time.Clock()
