@@ -1,4 +1,4 @@
-slenderman_novela/
+Proyecto/
 │
 ├── main.py                     # Punto de entrada del juego
 ├── settings.py                 # Configuración general (tamaño de ventana, colores, etc.)
