@@ -7,6 +7,14 @@ class Escena2():
     
     def __init__(self):
         '''Inicialización de la pantalla de la escena 2'''
+
+        # Detener cualquier música anterior (por ejemplo, Escena1)
+        pygame.mixer.music.stop()
+
+        # Cargar e iniciar música del bosque (solo se hace aquí)
+        pygame.mixer.music.load('Proyecto/assets/sonidos/musica_bosque.mp3')
+        pygame.mixer.music.play(-1, 0.0)  # En bucle
+
         # Configuración de la pantalla
         self.pantalla = pygame.display.set_mode((ancho, alto))
         pygame.display.set_caption('Escena 2 - Pantalla Negra')
@@ -37,6 +45,7 @@ class Escena2():
             
             # Controlar la velocidad del juego
             self.reloj.tick(fps)
+
 
 
 
