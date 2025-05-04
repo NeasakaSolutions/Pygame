@@ -46,24 +46,24 @@ class Escena1():
         lineas_linea2 = dividir_texto(self.textos["narrador_linea2"], self.fuente, ancho - 100)
 
         # Configuración de las líneas de texto
-        self.textos_linea1 = [self.fuente.render(linea, True, (255, 255, 255)) for linea in lineas_linea1]
-        self.textos_linea2 = [self.fuente.render(linea, True, (255, 255, 255)) for linea in lineas_linea2]
+        self.textos_linea1 = [self.fuente.render(linea, True, (0, 0, 0)) for linea in lineas_linea1]
+        self.textos_linea2 = [self.fuente.render(linea, True, (0, 0, 0)) for linea in lineas_linea2]
 
         # Posicionamiento de las líneas
         self.rect_narrador_linea1 = [texto.get_rect(center=(ancho // 2, 100 + 40 * i)) for i, texto in enumerate(self.textos_linea1)]
         self.rect_narrador_linea2 = [texto.get_rect(center=(ancho // 2, 200 + 40 * i)) for i, texto in enumerate(self.textos_linea2)]
 
         # Renderizar la instrucción
-        self.texto_instruccion = self.fuente.render(self.textos["instruccion"], True, (200, 200, 200))
+        self.texto_instruccion = self.fuente.render(self.textos["instruccion"], True, (0, 0, 0))
         self.rect_instruccion = self.texto_instruccion.get_rect(center=(ancho // 2, 250 + 40 * (len(self.textos_linea1) + len(self.textos_linea2))))
 
         # Configuración de la pantalla de la escena 1
         self.pantalla = pygame.display.set_mode((ancho, alto))
-        pygame.display.set_caption('Escena 1 - Bosque')
+        pygame.display.set_caption('Escena 1 - Habitacion')
 
         # Configurar fondo de la imagen
         self.reloj = pygame.time.Clock()
-        self.fondo = pygame.image.load('Proyecto/assets/imagenes/escena_1.png')
+        self.fondo = pygame.image.load('Proyecto/assets/imagenes/habitacion.jpg')
         self.fondo = pygame.transform.scale(self.fondo, (ancho, alto))
 
     # Función para funcionamiento de la escena
@@ -79,9 +79,9 @@ class Escena1():
                 # Detectar si se presiona la tecla ESPACIO
                 if event.type == KEYDOWN and event.key == pygame.K_SPACE:
                     # Al presionar la tecla ESPACIO, cambiar a la escena 2
-                    escena = Escena2()  # Instanciamos la escena 2
-                    escena.run()  # Llamamos al método run() de la escena 2
-                    return  # Terminamos la ejecución de la escena 1
+                    escena = Escena2()
+                    escena.run()
+                    return  
 
             # Dibujos
             # Dibujar el fondo
