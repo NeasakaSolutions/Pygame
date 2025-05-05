@@ -2,7 +2,7 @@ import pygame
 import sys
 from settings import ancho, alto, fps
 from utils.textos import cargar_textos
-from scenes.escenaA3 import EscenaA3
+from scenes.final_bueno import FinalBueno  # Este sí se puede dejar arriba
 
 class EscenaA2():
     def __init__(self):
@@ -22,32 +22,66 @@ class EscenaA2():
         self.reloj = pygame.time.Clock()
 
         # Fondos
-        self.fondo_ciudad1 = pygame.image.load('Proyecto/assets/imagenes/fondo_menu.jpg')
-        self.fondo_ciudad1 = pygame.transform.scale(self.fondo_ciudad1, (ancho, alto))
-        self.fondo_ciudad2 = pygame.image.load('Proyecto/assets/imagenes/escena_1.png')
-        self.fondo_ciudad2 = pygame.transform.scale(self.fondo_ciudad2, (ancho, alto))
+        self.fondo_ciudad = pygame.image.load('Proyecto/assets/imagenes/ciudad.jpg')
+        self.fondo_ciudad = pygame.transform.scale(self.fondo_ciudad, (ancho, alto))
+        self.fondo_noticia = pygame.image.load('Proyecto/assets/imagenes/noticia.jpg')
+        self.fondo_noticia = pygame.transform.scale(self.fondo_noticia, (ancho, alto))
 
-        # Botón
-        self.boton_ancho = 200
+        # Botones
+        self.boton_ancho = 220
         self.boton_alto = 50
         self.boton_color_base = (0, 0, 0, 100)
         self.boton_color_hover = (0, 0, 0, 255)
-        self.boton_rect = pygame.Rect((ancho - self.boton_ancho) // 2, alto - 100, self.boton_ancho, self.boton_alto)
+
+        # Botón "Siguiente"
+        self.boton_siguiente_rect = pygame.Rect(
+            (ancho - self.boton_ancho) // 2,
+            alto - 100,
+            self.boton_ancho,
+            self.boton_alto
+        )
+
+        # Botón "Regresar a casa"
+        self.boton_regresar_rect = pygame.Rect(
+            (ancho - self.boton_ancho) // 2,
+            alto - 170,
+            self.boton_ancho,
+            self.boton_alto
+        )
+
+    def dividir_texto(self, texto, fuente, max_ancho):
+        palabras = texto.split(' ')
+        lineas = []
+        linea_actual = ""
+
+        for palabra in palabras:
+            test_linea = linea_actual + palabra + " "
+            if fuente.size(test_linea)[0] <= max_ancho:
+                linea_actual = test_linea
+            else:
+                lineas.append(linea_actual)
+                linea_actual = palabra + " "
+        lineas.append(linea_actual)
+        return lineas
 
     def dibujar_texto(self, texto):
-        render = self.fuente.render(texto, True, (255, 255, 255))
-        rect = render.get_rect(center=(ancho // 2, alto // 2 - 50))
-        self.pantalla.blit(render, rect)
+        lineas = self.dividir_texto(texto, self.fuente, ancho - 100)
+        y = alto // 2 - 50 - (len(lineas) * 20)
+        for linea in lineas:
+            render = self.fuente.render(linea.strip(), True, (255, 255, 255))
+            rect = render.get_rect(center=(ancho // 2, y))
+            self.pantalla.blit(render, rect)
+            y += self.fuente.get_linesize()
 
-    def dibujar_boton(self, superficie, texto, mouse_pos):
-        mouse_encima = self.boton_rect.collidepoint(mouse_pos)
+    def dibujar_boton(self, superficie, texto, rect, mouse_pos):
+        mouse_encima = rect.collidepoint(mouse_pos)
         boton_surface = pygame.Surface((self.boton_ancho, self.boton_alto), pygame.SRCALPHA)
         color = self.boton_color_hover if mouse_encima else self.boton_color_base
         boton_surface.fill(color)
-        superficie.blit(boton_surface, self.boton_rect)
+        superficie.blit(boton_surface, rect)
 
         texto_render = self.fuente.render(texto, True, (255, 255, 255))
-        texto_rect = texto_render.get_rect(center=self.boton_rect.center)
+        texto_rect = texto_render.get_rect(center=rect.center)
         superficie.blit(texto_render, texto_rect)
 
         return mouse_encima
@@ -68,24 +102,35 @@ class EscenaA2():
 
             # Elegir fondo según diálogo actual
             if self.indice_dialogo <= 1:
-                self.pantalla.blit(self.fondo_ciudad1, (0, 0))
+                self.pantalla.blit(self.fondo_ciudad, (0, 0))
             else:
-                self.pantalla.blit(self.fondo_ciudad2, (0, 0))
+                self.pantalla.blit(self.fondo_noticia, (0, 0))
 
             # Mostrar texto
             if self.indice_dialogo < len(self.dialogos):
                 self.dibujar_texto(self.dialogos[self.indice_dialogo])
             else:
                 pygame.mixer.music.stop()
-                siguiente = EscenaA3()
+                siguiente = FinalBueno()
                 siguiente.run()
                 return
 
-            # Botón
-            encima = self.dibujar_boton(self.pantalla, "Siguiente", mouse_pos)
+            # Dibujar botones
+            encima_siguiente = self.dibujar_boton(self.pantalla, "Siguiente", self.boton_siguiente_rect, mouse_pos)
+            encima_regresar = self.dibujar_boton(self.pantalla, "Regresar a casa", self.boton_regresar_rect, mouse_pos)
 
-            if encima and mouse_click:
+            # Acciones
+            if encima_siguiente and mouse_click:
                 self.indice_dialogo += 1
+
+            if encima_regresar and mouse_click:
+                pygame.mixer.music.stop()
+                from scenes.escena1 import Escena1  # Import dinámico para evitar circular import
+                escena1 = Escena1()
+                escena1.run()
+                return
 
             pygame.display.flip()
             self.reloj.tick(fps)
+
+

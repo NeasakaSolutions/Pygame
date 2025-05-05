@@ -3,7 +3,7 @@ import sys
 from settings import ancho, alto, fps
 
 # Clase para la escena 2 con una ventana negra
-class EscenaA3():
+class FinalBueno():
     
     def __init__(self):
         '''Inicialización de la pantalla de la escena 2'''
@@ -17,7 +17,7 @@ class EscenaA3():
 
         # Configuración de la pantalla
         self.pantalla = pygame.display.set_mode((ancho, alto))
-        pygame.display.set_caption('Escena 2 - Pantalla Negra')
+        pygame.display.set_caption('Final bueno')
 
         # Reloj para controlar el frame rate
         self.reloj = pygame.time.Clock()

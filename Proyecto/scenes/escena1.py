@@ -5,7 +5,7 @@ import sys
 from settings import ancho, alto, fps
 from utils.textos import cargar_textos
 from scenes.escena2 import Escena2
-from scenes.escenaA2 import EscenaA2 # Asegúrate de tener esta clase creada
+from scenes.escenaA2 import EscenaA2 
 
 # Función para dividir texto
 def dividir_texto(texto, fuente, ancho_max):
